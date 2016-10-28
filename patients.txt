@@ -31,6 +31,8 @@ middleName:Le
 lastName:Clar
 suffix:
 ailment:whine
+ailment:severe cough
+ailment:broken nose
 doctor:House
 treated:0
 priority:501

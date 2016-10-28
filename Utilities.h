@@ -14,7 +14,16 @@
 #include "Patient.h"
 
 #define TXT_PATH "/Users/slonej3/Desktop/projects/school/402/assignment3/patients.txt"
-
+#define SPLIT_CHAR ':'
+#define EMPTY_STR ""
+#define KEY_FIRST_NAME "firstName"
+#define KEY_MIDDLE_NAME "middleName"
+#define KEY_LAST_NAME "lastName"
+#define KEY_SUFFIX "suffix"
+#define KEY_AILMENT "ailment"
+#define KEY_DOCTOR "doctor"
+#define KEY_TREATED "treated"
+#define KEY_PRIORITY "priority"
 using namespace std;
 
 class Utilities {
