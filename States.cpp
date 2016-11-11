@@ -6,21 +6,22 @@
 
 void States::gameLoop() {
     vector<Patient> patients;
-    Utilities::read(&patients);
-    PriorityQueue().addAllPatientsToPriorityQueue(&patients);
-    //priority_queue<Patient> p = PriorityQueue().getPq();
+    priority_queue<Patient, vector<Patient>, Priority> pQueue;
     /*for (unsigned long i = 0; i < patients.size(); ++i) {
-        pq.push(patients.at(i));
+        p.push(patients.at(i));
     }
-    while (!pq.empty()) {
-        Patient patient = pq.top();
+    while (!p.empty()) {
+        Patient patient = p.top();
         cout << patient.getPriority() << endl;
-        pq.pop();
+        p.pop();
     }*/
 
     while(!States::isIsUserFinished()) {
         States::setIsUserFinished(true);
-        cout << UserInput::readInput() << endl;
+        string input = UserInput().readInput();
+        pQueue = UserInput::options(input, &patients, pQueue);
+        cout << patients[0].getPriority() << endl;
+        cout << "top " << pQueue.top().getDoctor() << endl;
     }
 }
 
