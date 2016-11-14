@@ -19,9 +19,8 @@ void States::gameLoop() {
     while(!States::isIsUserFinished()) {
         States::setIsUserFinished(true);
         string input = UserInput().readInput();
-        pQueue = UserInput::options(input, &patients, pQueue);
-        cout << patients[0].getPriority() << endl;
-        cout << "top " << pQueue.top().getDoctor() << endl;
+        UserInput::options(input, &patients, &pQueue);
+        cout << "\n\n\n\n top poop " << pQueue.size() << endl;
     }
 }
 

@@ -16,7 +16,7 @@ struct Priority {
 };
 class PriorityQueue {
 private:
-    priority_queue<Patient, std::vector<Patient>, Priority> pq;
+    priority_queue<Patient, vector<Patient>, Priority> pq;
 public:
     priority_queue<Patient, vector<Patient>, Priority> getPq();
     void setPq(const priority_queue<Patient, vector<Patient>, Priority> &pq);

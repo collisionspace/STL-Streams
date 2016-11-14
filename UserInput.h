@@ -29,7 +29,7 @@ private:
     const string userOptions[10] = {ADD_PATIENT, TREAT_PATIENT, PRINT_PATIENT_INFO, PRINT_TREAT_PATIENTS, NEXT_PATIENT, ALL_PATIENTS_IN_QUEUE, TREAT_ALL_PATIENTS, ALL_PATIENTS_BY_DOCTOR, HELP, ADD_PATIENTS_VIA_FILE};
 public:
     string readInput();
-    static priority_queue<Patient, vector<Patient>, Priority> options(string, vector<Patient> *patients, priority_queue<Patient, vector<Patient>, Priority>);
+    static void options(string, vector<Patient> *patients, priority_queue<Patient, vector<Patient>, Priority> *pQueue);
     void inputOptions();
 };
 

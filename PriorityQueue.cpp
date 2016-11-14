@@ -2,6 +2,7 @@
 // Created by James Slone on 10/28/16.
 //
 
+#include <iostream>
 #include "PriorityQueue.h"
 
 void PriorityQueue::addAllPatientsToPriorityQueue(vector<Patient> *patients) {
@@ -12,6 +13,8 @@ void PriorityQueue::addAllPatientsToPriorityQueue(vector<Patient> *patients) {
 
 void PriorityQueue::addPatientToPriorityQueue(Patient patient) {
     pq.push(patient);
+
+    cout << "\n\n\n\n top " << pq.top().getDoctor() << endl;
 }
 
 void PriorityQueue::setPq(const priority_queue<Patient, vector<Patient>, Priority> &pq) {
