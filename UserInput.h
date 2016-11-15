@@ -37,8 +37,11 @@ public:
     void inputOptions();
     Patient readInPatient();
     void outputAllPatients(vector<Patient> *patients);
-    void outputPatient(Patient patient);
     vector<Patient> patientsWaiting(priority_queue<Patient, vector<Patient>, Priority> pQueue);
+    void treatAllPatients(vector<Patient> *treatedPatients, priority_queue<Patient, vector<Patient>, Priority> *priorityQ);
+    Patient treatPatient(priority_queue<Patient, vector<Patient>, Priority> *priorityQ);
+    void outputByDoctor(vector<Patient> *treatedPatients, priority_queue<Patient, vector<Patient>, Priority> *pQueue);
+    vector<Patient> merge(vector<Patient> *treatedPatients, priority_queue<Patient, vector<Patient>, Priority> *pQueue);
 };
 
 

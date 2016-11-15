@@ -2,11 +2,14 @@
 // Created by James Slone on 10/28/16.
 //
 
+#include <iostream>
 #include "Patient.h"
 
+
+int Patient::idCount = 0;
 Patient::Patient(const string &firstName, const string &middleName, const string &lastName, const string &suffix,
-                 const vector<string> &ailment, const string &doctor, bool treated, int priority) : firstName(
-        firstName), middleName(middleName), lastName(lastName), suffix(suffix), ailment(ailment), doctor(doctor),
+                 const vector<string> &ailments, const string &doctor, bool treated, int priority) : id(++idCount), firstName(
+        firstName), middleName(middleName), lastName(lastName), suffix(suffix), ailments(ailments), doctor(doctor),
                                                                                                     treated(treated),
                                                                                                     priority(
                                                                                                             priority) {}
@@ -44,11 +47,11 @@ void Patient::setSuffix(const string &suffix) {
 }
 
 const vector<string> &Patient::getAilment() const {
-    return ailment;
+    return ailments;
 }
 
 void Patient::setAilment(const vector<string> &ailment) {
-    Patient::ailment = ailment;
+    Patient::ailments = ailment;
 }
 
 const string &Patient::getDoctor() const {
@@ -73,4 +76,22 @@ int Patient::getPriority() const {
 
 void Patient::setPriority(int priority) {
     Patient::priority = priority;
+}
+
+int Patient::getID() const {
+    return id;
+}
+
+void Patient::outputPatient() const {
+    cout << "Patient id: " << id << endl;
+    cout << "First Name: " << firstName << endl;
+    cout << "Middle Name: " << middleName << endl;
+    cout << "Last Name: " << lastName << endl;
+    cout << "Suffix: " << suffix << endl;
+    for(string const &ailment : ailments) {
+        cout << "Ailment: " << ailment << endl;
+    }
+    cout << "Doctor: " << doctor << endl;
+    cout << "Treated: " << treated << endl;
+    cout << "Priority: " << priority << "\n\n" << endl;
 }

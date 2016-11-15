@@ -33,21 +33,22 @@ void UserInput::options(string input, vector<Patient> *treatedPatients, priority
                 cout << "There is no patient currently in queue" << endl;
             }
             else {
-                Patient patient = pQueue->top();
-                patient.setTreated(1);
-                treatedPatients->push_back(patient);
-                pQueue->pop();
+                treatedPatients->push_back(treatPatient(pQueue));
             }
             break;
         }
-        case 3: //print patients info
+        case 3: {//print patients info
+            vector<Patient> patients = merge(treatedPatients, pQueue);
+            sort(patients.begin(), patients.end(), lessThan());
+            outputAllPatients(&patients);
+            break;
+        }
         case 4: {//print report of treated patients
             outputAllPatients(treatedPatients);
             break;
         }
         case 5: {//print next patient to be treated
-            Patient nextPatient = pQueue->top();
-            outputPatient(nextPatient);
+            pQueue->top().outputPatient();
             break;
         }
         case 6: {//print report of all patients waiting in priority queue
@@ -55,8 +56,14 @@ void UserInput::options(string input, vector<Patient> *treatedPatients, priority
             outputAllPatients(&p);
             break;
         }
-        case 7: //single command to treat all patients
-        case 8: //print out all patients by doctor
+        case 7: {//single command to treat all patients
+            treatAllPatients(treatedPatients, pQueue);
+            break;
+        }
+        case 8: {//print out all patients by doctor
+            outputByDoctor(treatedPatients, pQueue);
+            break;
+        }
         case 9: //print out a guide on each command the system offers. (-help)
         case 10: {//bulk add patients into the system from a file
             vector<Patient> patie;
@@ -107,21 +114,8 @@ Patient UserInput::readInPatient() {
 
 void UserInput::outputAllPatients(vector<Patient> *patients) {
     for(Patient &patient : *patients) {
-        outputPatient(patient);
+        patient.outputPatient();
     }
-}
-
-void UserInput::outputPatient(Patient patient) {
-    cout << "First Name: " << patient.getFirstName() << endl;
-    cout << "Middle Name: " << patient.getMiddleName() << endl;
-    cout << "Last Name: " << patient.getLastName() << endl;
-    cout << "Suffix: " << patient.getSuffix() << endl;
-    for(string const &ailment : patient.getAilment()) {
-        cout << "Ailment: " << ailment << endl;
-    }
-    cout << "Doctor: " << patient.getDoctor() << endl;
-    cout << "Treated: " << patient.isTreated() << endl;
-    cout << "Priority: " << patient.getPriority() << "\n\n" << endl;
 }
 
 vector<Patient> UserInput::patientsWaiting(priority_queue<Patient, vector<Patient>, Priority> priorityQ) {
@@ -129,6 +123,33 @@ vector<Patient> UserInput::patientsWaiting(priority_queue<Patient, vector<Patien
     while(!priorityQ.empty()) {
         patients.push_back(priorityQ.top());
         priorityQ.pop();
+    }
+    return patients;
+}
+
+void UserInput::treatAllPatients(vector<Patient> *treatedPatients, priority_queue<Patient, vector<Patient>, Priority> *pQueue) {
+    while(!pQueue->empty()) {
+        treatedPatients->push_back(treatPatient(pQueue));
+    }
+}
+
+Patient UserInput::treatPatient(priority_queue<Patient, vector<Patient>, Priority> *pQueue) {
+    Patient patient = pQueue->top();
+    patient.setTreated(1);
+    pQueue->pop();
+    return patient;
+}
+
+void UserInput::outputByDoctor(vector<Patient> *treatedPatients, priority_queue<Patient, vector<Patient>, Priority> *pQueue) {
+    vector<Patient> patients = merge(treatedPatients, pQueue);
+    std::sort(patients.begin(), patients.end());
+    outputAllPatients(&patients);
+}
+
+vector<Patient> UserInput::merge(vector<Patient> *treatedPatients, priority_queue<Patient, vector<Patient>, Priority> *pQueue) {
+    vector<Patient> patients = patientsWaiting(*pQueue);
+    for (Patient &treated : *treatedPatients) {
+        patients.push_back(treated);
     }
     return patients;
 }

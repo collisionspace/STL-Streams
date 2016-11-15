@@ -11,11 +11,13 @@ using namespace std;
 
 class Patient {
 private:
+    int id;
+    static int idCount;
     string firstName;
     string middleName;
     string lastName;
     string suffix;
-    vector<string> ailment;
+    vector<string> ailments;
     string doctor;
     bool treated;
     int priority;
@@ -38,6 +40,15 @@ public:
     void setTreated(bool treated);
     int getPriority() const;
     void setPriority(int priority);
+    int getID() const;
+    void outputPatient() const;
+    bool operator<(const Patient &rhs) const { return doctor < rhs.doctor; }
+};
+
+struct lessThan {
+    inline bool operator() (const Patient& lhs, const Patient& rhs) {
+        return lhs.getID() < rhs.getID();
+    }
 };
 
 #endif //INCLASS_PATIENT_H
