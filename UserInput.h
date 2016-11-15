@@ -20,17 +20,22 @@
 #define ALL_PATIENTS_IN_QUEUE "Print report of all the patients in queue"
 #define TREAT_ALL_PATIENTS "Treats all the patients"
 #define ALL_PATIENTS_BY_DOCTOR "Print out all patients by doctor"
-#define HELP "Allows user to find out more information about each command"
+#define HELP "Find out more information about each command"
 #define ADD_PATIENTS_VIA_FILE "Bulk adds patients into the system from a file"
+#define QUIT "Quit"
+#define Option_Size 11
+
 using namespace std;
 
 class UserInput {
 private:
-    const string userOptions[10] = {ADD_PATIENT, TREAT_PATIENT, PRINT_PATIENT_INFO, PRINT_TREAT_PATIENTS, NEXT_PATIENT, ALL_PATIENTS_IN_QUEUE, TREAT_ALL_PATIENTS, ALL_PATIENTS_BY_DOCTOR, HELP, ADD_PATIENTS_VIA_FILE};
+    const string userOptions[Option_Size] = {ADD_PATIENT, TREAT_PATIENT, PRINT_PATIENT_INFO, PRINT_TREAT_PATIENTS, NEXT_PATIENT, ALL_PATIENTS_IN_QUEUE, TREAT_ALL_PATIENTS, ALL_PATIENTS_BY_DOCTOR, HELP, ADD_PATIENTS_VIA_FILE, QUIT};
 public:
     string readInput();
-    static void options(string, vector<Patient> *patients, priority_queue<Patient, vector<Patient>, Priority> *pQueue);
+    string userInput();
+    void options(string, vector<Patient> *patients, priority_queue<Patient, vector<Patient>, Priority> *pQueue);
     void inputOptions();
+    Patient readInPatient();
 };
 
 

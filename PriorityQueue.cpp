@@ -13,8 +13,6 @@ void PriorityQueue::addAllPatientsToPriorityQueue(vector<Patient> *patients) {
 
 void PriorityQueue::addPatientToPriorityQueue(Patient patient) {
     pq.push(patient);
-
-    cout << "\n\n\n\n top " << pq.top().getDoctor() << endl;
 }
 
 void PriorityQueue::setPq(const priority_queue<Patient, vector<Patient>, Priority> &pq) {

@@ -4,6 +4,7 @@
 
 #include "States.h"
 
+UserInput uInput = UserInput();
 void States::gameLoop() {
     vector<Patient> patients;
     priority_queue<Patient, vector<Patient>, Priority> pQueue;
@@ -17,9 +18,9 @@ void States::gameLoop() {
     }*/
 
     while(!States::isIsUserFinished()) {
-        States::setIsUserFinished(true);
-        string input = UserInput().readInput();
-        UserInput::options(input, &patients, &pQueue);
+        string input = uInput.readInput();
+        if (stoi(input) == 11) { States::setIsUserFinished(true); }
+        uInput.options(input, &patients, &pQueue);
         cout << "\n\n\n\n top poop " << pQueue.size() << endl;
     }
 }
