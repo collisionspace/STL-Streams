@@ -6,7 +6,7 @@
 
 UserInput uInput = UserInput();
 void States::gameLoop() {
-    vector<Patient> patients;
+    vector<Patient> treatedPatients;
     priority_queue<Patient, vector<Patient>, Priority> pQueue;
     /*for (unsigned long i = 0; i < patients.size(); ++i) {
         p.push(patients.at(i));
@@ -20,8 +20,12 @@ void States::gameLoop() {
     while(!States::isIsUserFinished()) {
         string input = uInput.readInput();
         if (stoi(input) == 11) { States::setIsUserFinished(true); }
-        uInput.options(input, &patients, &pQueue);
+        uInput.options(input, &treatedPatients, &pQueue);
         cout << "\n\n\n\n top poop " << pQueue.size() << endl;
+        if (treatedPatients.size() > 0) {
+            cout << treatedPatients.at(treatedPatients.size()-1).getFirstName() << endl;
+            cout << treatedPatients.at(treatedPatients.size()-1).isTreated() << endl;
+        }
     }
 }
 

@@ -33,9 +33,12 @@ private:
 public:
     string readInput();
     string userInput();
-    void options(string, vector<Patient> *patients, priority_queue<Patient, vector<Patient>, Priority> *pQueue);
+    void options(string, vector<Patient> *treatedPatients, priority_queue<Patient, vector<Patient>, Priority> *pQueue);
     void inputOptions();
     Patient readInPatient();
+    void outputAllPatients(vector<Patient> *patients);
+    void outputPatient(Patient patient);
+    vector<Patient> patientsWaiting(priority_queue<Patient, vector<Patient>, Priority> pQueue);
 };
 
 
