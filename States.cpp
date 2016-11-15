@@ -21,7 +21,6 @@ void States::gameLoop() {
         string input = uInput.readInput();
         if (stoi(input) == 11) { States::setIsUserFinished(true); }
         uInput.options(input, &treatedPatients, &pQueue);
-        cout << "\n\n\n\n top poop " << pQueue.size() << endl;
         if (treatedPatients.size() > 0) {
             cout << treatedPatients.at(treatedPatients.size()-1).getFirstName() << endl;
             cout << treatedPatients.at(treatedPatients.size()-1).isTreated() << endl;

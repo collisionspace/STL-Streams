@@ -97,7 +97,9 @@ Patient UserInput::readInPatient() {
     cout << "Enter suffix" << endl;
     string suffix = userInput();
     cout << "Enter the amount of ailments" << endl;
-    int ailemntSize = isdigit(stoi(userInput())) ? stoi(userInput()) : 0;
+    string input = userInput();
+    bool has_only_digits = (input.find_first_not_of( "0123456789" ) == string::npos);
+    int ailemntSize = has_only_digits ? stoi(input) : 0;
     vector<string> ailments;
     for(int i = 0; i < ailemntSize; i++) {
         cout << "Enter the ailment" << endl;
@@ -106,9 +108,13 @@ Patient UserInput::readInPatient() {
     cout << "Enter doctor" << endl;
     string doctor = userInput();
     cout << "Enter treated" << endl;
-    bool treated = isdigit(stoi(userInput())) ? stoi(userInput()) : 0;
+    input = userInput();
+    has_only_digits = (input.find_first_not_of( "0123456789" ) == string::npos);
+    bool treated = has_only_digits ? stoi(input) : 0;
     cout << "Enter priority" << endl;
-    int priority = stoi(userInput());
+    input = userInput();
+    has_only_digits = (input.find_first_not_of( "0123456789" ) == string::npos);
+    int priority = has_only_digits ? stoi(input) : 0;
     return Patient(firstName,middleName,lastName,suffix,ailments,doctor,treated,priority);
 }
 
