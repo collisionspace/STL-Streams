@@ -12,6 +12,8 @@
 #include "Utilities.h"
 #include "UserInput.h"
 #include "PriorityQueue.h"
+#include "Logger.h"
+
 using namespace std;
 
 class States {
@@ -19,6 +21,7 @@ private:
     bool isUserFinished = false;
 
 public:
+   // States() {Logger::getLogger();}
     bool isIsUserFinished() const;
     void setIsUserFinished(bool isUserFinished);
     void gameLoop();

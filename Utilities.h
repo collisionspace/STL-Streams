@@ -29,7 +29,7 @@ using namespace std;
 class Utilities {
 public:
     static vector<string> split(string line);
-    static void read(vector<Patient> *patients);
+    static void read(vector<Patient> *patients, string);
     static Patient createPatient(std::multimap<string, string> *patientMap);
 };
 

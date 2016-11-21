@@ -8,14 +8,7 @@ UserInput uInput = UserInput();
 void States::gameLoop() {
     vector<Patient> treatedPatients;
     priority_queue<Patient, vector<Patient>, Priority> pQueue;
-    /*for (unsigned long i = 0; i < patients.size(); ++i) {
-        p.push(patients.at(i));
-    }
-    while (!p.empty()) {
-        Patient patient = p.top();
-        cout << patient.getPriority() << endl;
-        p.pop();
-    }*/
+    srand (time(NULL));
 
     while(!States::isIsUserFinished()) {
         string input = uInput.readInput();

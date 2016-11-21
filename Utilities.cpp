@@ -15,8 +15,8 @@ vector<string> Utilities::split(string line) {
     return array;
 }
 
-void Utilities::read(vector<Patient> *patients) {
-    std::ifstream infile(TXT_PATH);
+void Utilities::read(vector<Patient> *patients, string path) {
+    std::ifstream infile(path);
     std::string line;
     typedef std::multimap<string, string> mapType1;
     mapType1 patientMap;
