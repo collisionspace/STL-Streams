@@ -21,7 +21,6 @@ private:
     bool isUserFinished = false;
 
 public:
-   // States() {Logger::getLogger();}
     bool isIsUserFinished() const;
     void setIsUserFinished(bool isUserFinished);
     void gameLoop();

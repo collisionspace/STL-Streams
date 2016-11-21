@@ -5,7 +5,7 @@
 #ifndef SLONE_PROJECT3_PRIORITYQUEUE_H
 #define SLONE_PROJECT3_PRIORITYQUEUE_H
 
-
+#include <iostream>
 #include <queue>
 #include "Patient.h"
 

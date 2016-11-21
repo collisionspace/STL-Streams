@@ -14,6 +14,7 @@
 #include "Patient.h"
 #include "PriorityQueue.h"
 #include "Logger.h"
+#include "Utilities.h"
 
 #define ADD_PATIENT "Add patient to the system"
 #define ADD_PATIENT_HELP "Add a patient to the system by entering info the system prompts you for."

@@ -2,7 +2,6 @@
 // Created by James Slone on 10/28/16.
 //
 
-#include <iostream>
 #include "PriorityQueue.h"
 
 void PriorityQueue::addAllPatientsToPriorityQueue(vector<Patient> *patients) {

@@ -6,6 +6,7 @@
 #define INCLASS_PATIENT_H
 #include <string>
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
